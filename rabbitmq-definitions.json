@@ -1,0 +1,61 @@
+{
+  "rabbit_version": "3.13.7",
+  "users": [
+    {
+      "name": "guest",
+      "password": "guest",
+      "tags": "administrator"
+    },
+    {
+      "name": "user",
+      "password": "user123",
+      "tags": "administrator"
+    }
+  ],
+  "vhosts": [
+    {
+      "name": "/"
+    }
+  ],
+  "permissions": [
+    {
+      "user": "guest",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    },
+    {
+      "user": "user",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ],
+  "exchanges": [
+    {
+      "name": "weather-exchange",
+      "vhost": "/",
+      "type": "direct",
+      "durable": true
+    }
+  ],
+  "queues": [
+    {
+      "name": "weather-requests",
+      "vhost": "/",
+      "durable": true
+    }
+  ],
+  "bindings": [
+    {
+      "source": "weather-exchange",
+      "vhost": "/",
+      "destination": "weather-requests",
+      "destination_type": "queue",
+      "routing_key": "weather.request",
+      "arguments": {}
+    }
+  ]
+}

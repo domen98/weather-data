@@ -1,0 +1,6 @@
+.venv
+.vscode/
+.idea/
+.env
+.web/app/__pycache__
+.consumer/main
